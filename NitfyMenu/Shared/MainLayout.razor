@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+
+
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        <!--Header-->
+        <Header></Header>
+        <!--End Header-->
+        <div class="boxed">
+            <div id="content-container">
+                <Breadcrumb></Breadcrumb>
+                <div id="page-content" style="min-height: 450px;">
+                    <!--Body-->
+                    @Body
+                    <!--End Body-->
+                </div>
+             </div>
+            <!--MainNav-->
+            <MainNav></MainNav>
+            <!--End MainNav-->
+         </div>
+        <!--Footer-->
+        <Footer></Footer>
+        <!--End Footer-->
+     </div>
+
+@code {
+
+    [Parameter]
+    public string Page { get; set; }
+}

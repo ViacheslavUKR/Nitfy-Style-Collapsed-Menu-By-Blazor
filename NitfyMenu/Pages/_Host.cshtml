@@ -1,0 +1,118 @@
+﻿@page "/"
+@namespace NitfyMenu.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nitfy-style collapsed menu</title>
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Open Sans Font [ OPTIONAL ] -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="css/nifty.min.css" rel="stylesheet">
+    <!--NEW CSS STYLE FOR LAYOUT-->
+    <link href="css/main.css" rel="stylesheet">
+    <!--Premium Icons [ OPTIONAL ]-->
+    <link href="premium/icon-sets/icons/line-icons/premium-line-icons.min.css" rel="stylesheet">
+    <link href="premium/icon-sets/icons/solid-icons/premium-solid-icons.min.css" rel="stylesheet">
+    <!--=================================================-->
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="css/pace.min.css" rel="stylesheet">
+</head>
+<body>
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.server.js"></script>
+
+    <script>
+        Blazor.defaultReconnectionHandler._reconnectCallback = function (d) {
+            document.location.reload();
+        }
+    </script>
+    <script>
+        //Nitfy collapse/expand menu
+        function NitfyMenu(IsMenuOpen) {
+            var container = document.getElementById('container');
+            var positionel = document.getElementsByClassName('position-el');
+            var boxtableheader = document.getElementsByClassName('box-table-header');
+            var vidrow = document.getElementsByClassName('vidrow');
+            var positionlayoutinside = document.getElementsByClassName('position-layout-inside');
+            var positionlayoutinside2 = document.getElementsByClassName('position-layout-inside2');
+            var tablelayouttablepage = document.getElementsByClassName('table-layout-table-page');
+            var tablelayouttablepage2 = document.getElementsByClassName('table-layout-table-page2');
+            var iconmediamenu = document.getElementsByClassName('icon-media-menu');
+            var listcoinstype = document.getElementsByClassName('list-coins-type');
+            var listheader = document.getElementsByClassName('list-header');
+            var listdivider = document.getElementsByClassName('list-divider');
+            var menutitle = document.getElementsByClassName('menu-title');
+            var arrow = document.getElementsByClassName('arrow');
+            var menutitlelabel = document.getElementsByClassName('menu-title > label');
+            var menutitlebadge = document.getElementsByClassName('menu-title > badge');
+
+            if (IsMenuOpen) {
+                container.classList.add('mainnav-sm'); 
+                container.classList.remove('mainnav-lg');
+                Array.from(positionel, function (x) { x.style.margin = "0 0 0 2.8%" });
+                Array.from(boxtableheader, function (x) { x.style.width = " 1232px" });
+                Array.from(vidrow, function (x) { x.style.left = "80.89%" });
+                Array.from(positionlayoutinside, function (x) { x.style.cssText = "min-width : 1280px" });
+                Array.from(tablelayouttablepage, function (x) { x.style.cssText = "margin-left : 2.32%" });
+                Array.from(tablelayouttablepage2, function (x) { x.style.cssText = "margin-left : 2.32%" });
+                Array.from(iconmediamenu, function (x) { x.style.left = "0%" });
+                Array.from(listcoinstype, function (x) { x.style.margin = "25px 0 0 30%"});
+                Array.from(listheader, function (x) { x.style.display = 'none' });
+                Array.from(listdivider, function (x) { x.style.display = 'none' });
+                Array.from(menutitle, function (x) { x.style.display = 'none' });
+                Array.from(arrow, function (x) { x.style.display = 'none' });
+                Array.from(menutitlelabel, function (x) { x.style.display = 'none' });
+                Array.from(menutitlebadge, function (x) { x.style.display = 'none' });
+                Array.from(listheader, function (x) { x.style.display = 'none' });
+
+            }
+            else {
+                container.classList.add('mainnav-lg');
+                container.classList.remove('mainnav-sm');
+                Array.from(positionel, function (x) { x.style.margin = "0 0 0 2%" });
+                Array.from(boxtableheader, function (x) { x.style.width = " 100%" });
+                Array.from(vidrow, function (x) { x.style.left = "79.7%" });
+                Array.from(positionlayoutinside, function (x) { x.style.cssText = "min-width = 1130px" });
+                Array.from(tablelayouttablepage, function (x) { x.style.cssText = "margin-left = 14.32%" });
+                Array.from(tablelayouttablepage2, function (x) { x.style.cssText = "margin-left = 14.32%" });
+                Array.from(iconmediamenu, function (x) { x.style.left = "37%" });
+                Array.from(listcoinstype, function (x) { x.style.margin = "25px 0 0 26%" });
+                Array.from(listheader, function (x) { x.style.display = 'inline' });
+                Array.from(listdivider,function (x) { x.style.display = 'inline' });
+                Array.from(menutitle,function (x) { x.style.display = 'inline' });
+                Array.from(arrow,function (x) { x.style.display = 'inline' });
+                Array.from(menutitlelabel,function (x) { x.style.display = 'inline' });
+                Array.from(menutitlebadge,function (x) { x.style.display = 'inline' });
+            }
+        }
+
+
+    </script>
+</body>
+</html>

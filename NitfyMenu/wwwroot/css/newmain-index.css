@@ -1,0 +1,77 @@
+
+/*Header*/
+/*_______________________*/
+.nav-header-menu{
+    height: 120px; 
+    background-color:white;
+}
+
+.main-container-user{
+    display: block;
+}
+
+.rectangle-bell{
+    width: 50px;
+    height: 50px;
+    background:white;
+    border-radius: 50%; 
+    float:right;
+    margin:35px 45px 0 15px; 
+    box-shadow:0 0px 20px rgba(0, 0, 0, 0.25);
+}
+
+.rectangle-out{
+    width: 50px;
+    height: 50px;
+    background:white;
+    border-radius: 50%; 
+    float:right;
+    margin:35px 0px 0 15px;
+    box-shadow:0 0px 20px rgba(0, 0, 0, 0.25);
+}
+
+.image-rec-2{
+    margin:9px 0 50px 9px;
+}
+
+.image-rec-1{
+    position: relative;right:-11.5px;top:9px;
+}
+
+.cart-summ{
+    color: white;
+    position: relative;
+    top:-19px;
+    left:4.5px;
+}
+
+.user-photo{
+    float: left;
+}
+
+.image-shared-header{
+    position: relative;
+    left:22px;
+    top:-21px;
+    height: 20px;
+}
+
+.logo-header{
+    margin:20px 0 20px 30px;
+}
+
+.user-name-header{
+    font-size: 12px;
+    float: left;
+    color:black;
+    font-weight: 800;
+}
+
+.user-email-header{
+    font-size: 10px;
+    color: rgb(212, 44, 94);
+    font-weight: 800;
+}
+
+/*END Header*/
+/*_______________________*/

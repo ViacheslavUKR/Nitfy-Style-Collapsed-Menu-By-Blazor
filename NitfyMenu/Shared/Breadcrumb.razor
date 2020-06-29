@@ -1,0 +1,66 @@
+﻿    <ul id="page-head" style="padding-left: 0px;" >
+        <!--Breadcrumb-->
+        <li class="breadcrumb-layout" style="cursor:pointer" >
+            <NavLink id="menu-open-close" class="mainnav-toggle" @onclick="MenuCollapse">
+                <i class="icon-bread-layout pli-list-view icon-lg"></i>
+            </NavLink>
+        </li>
+        <ul class="breadcrumb">
+            <li>
+                <NavLink href="/">
+                    <i class="black-layout pli-home"></i>
+                </NavLink>
+            </li>
+            @if (string.IsNullOrEmpty(curPage))
+            {
+                <li>
+                    <NavLink href="/">
+                        <strong class="black-layout">Dashboard</strong>
+                    </NavLink>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <NavLink href=@($"/{curPage}")>
+                        <strong class="black-layout">@(curPage)</strong>
+                    </NavLink>
+                </li>
+            }
+
+
+
+        </ul>
+        <!--End breadcrumb-->
+    </ul>
+
+@code {
+
+    [Inject] IJSRuntime JS { get; set; }
+    private bool IsMenuOpen = false;
+
+    private void MenuCollapse() {
+        IsMenuOpen = !IsMenuOpen;
+        JS.InvokeAsync<string>("NitfyMenu", IsMenuOpen);
+    }
+
+    [Inject] NavigationManager URL { get; set; }
+
+    public static string curPage;
+    protected override void OnInitialized()
+    {
+        URL.LocationChanged += HandleLocationChanged;
+        curPage = URL.ToBaseRelativePath(URL.Uri);
+    }
+
+    private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        curPage = URL.ToBaseRelativePath(URL.Uri);
+        base.StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        URL.LocationChanged -= HandleLocationChanged;
+    }
+}
