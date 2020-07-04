@@ -1,0 +1,55 @@
+﻿@page "/Login"
+@inherits LoginBase
+
+<div class="row">
+    <div class="panel">
+        <div style="margin-left: 15px;" class="container-login">
+            <div class="panel-heading">
+                <h3 class="panel-title form-security">Log in</h3>
+            </div>
+            <div style="margin-left: 30px;" class="panel-body">
+                <EditForm Model="@signInModel" OnValidSubmit="@RegisterUser">
+
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div style="margin-top:30px;" class="row">
+                        <div class="form-group">
+                            <label class="control-label form-security">Email adress</label>
+                            <InputText @bind-Value="@signInModel.Email" style=" height:50px; font-size: medium; font-weight: 600; width: 70%;" type="email" placeholder="Enter email" id="demo-inline-inputmail" class="form-control"></InputText>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="margin-top:30px;" class="form-group">
+                            <label class="control-label form-security">Password</label>
+                            <InputText @bind-Value="@signInModel.Password" style=" height:50px; font-size: medium; font-weight: 600; width: 70%;" type="password" placeholder="Password" id="demo-inline-inputpass" class="form-control"></InputText>
+                        </div>
+                    </div>
+                    <div style="position: relative; top:-49px; left:230px;" class="container-log">
+                        <div class="checkbox">
+                            <input id="demo-remember-me" class="magic-checkbox" type="checkbox">
+                            <label for="demo-remember-me">Remember me</label>
+                        </div>
+                        <button style="width: 20%;height:45px ;background-color: rgb(152, 53, 92); color: white; font-size: medium; margin-right: 2.5%;" class="btn" type="submit">Log in</button>
+                    </div>
+                </EditForm>
+                <p>
+                    <NavLink href="/Register">Register as a new user</NavLink>
+                </p>
+                <p style="margin-bottom: 100px;">
+                    Forgot your password?
+                </p>
+                @if (showSignInError)
+                {
+                    <div class="notification is-danger" style="color:red">
+                        Sorry, wrong username or password
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div>
+        <p>If you do not have an account register one <a href="/Register">here</a>!</p>
+    </div>
+</div>
+

@@ -1,15 +1,63 @@
-﻿
+﻿@*<Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData" >
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"  />
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>*@
+
+@using Microsoft.AspNetCore.Identity;
+@using Microsoft.AspNetCore.Http;
+@using Models;
+@using Microsoft.Extensions.Logging;
+@using Pages;
+
 <Router AppAssembly="@typeof(Program).Assembly">
-    <Found Context="routeData" >
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"  />
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            <NotAuthorized>
+                <NotAuthorizedHandler></NotAuthorizedHandler>
+            </NotAuthorized>
+            <Authorizing>
+                <h1>Authentication in progress</h1>
+            </Authorizing>
+        </AuthorizeRouteView>
     </Found>
     <NotFound>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p>Sorry, there's nothing at this address.</p>
-        </LayoutView>
+        <CascadingAuthenticationState>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </CascadingAuthenticationState>
     </NotFound>
 </Router>
 
+
 @code {
+
+    [Inject] NavigationManager URL { get; set; }
+    [Inject] IHttpContextAccessor HttpContextAccessor { get; set; } = default!;
+    [Inject] ILogger<App> Log { get; set; }
+    [Inject] AuthenticationStateProvider authenticationStateProvider { get; set; }
+
+    public static AuthenticationState AuState = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuState = await authenticationStateProvider.GetAuthenticationStateAsync();
+        Log.LogInformation($"App.AuthenticationStateProvider.User (OnInitializedAsync) ={AuState.User.Identity.Name}, Route={URL.ToBaseRelativePath(URL.Uri)}");
+        if (!AuState.User.Identity.IsAuthenticated)
+        {
+            if (URL.ToBaseRelativePath(URL.Uri) != "Login" & URL.ToBaseRelativePath(URL.Uri) != "Register" & URL.ToBaseRelativePath(URL.Uri) != "Logoff")
+            {
+                URL.NavigateTo("/Login");
+            }
+
+        }
+
+    }
 
 }

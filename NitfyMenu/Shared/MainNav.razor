@@ -1,127 +1,154 @@
-﻿
+﻿@using Microsoft.Extensions.Logging;
 
-    <nav id="mainnav-container">
-        <div id="mainnav">
-            <!--Menu-->
-            <!--================================-->
-            <div class="sticky" id="mainnav-menu-wrap">
-                <div class="nano">
-                    <div class="nano-content" style="overflow:hidden">
-                        <!--Profile Widget-->
-                        <!--================================-->
-                        <ul id="mainnav-menu" class="list-group">
-                            <!--Category name-->
-                            <li class="white-layout list-header">Navigation</li>
-                            <!--Menu list item-->
-                            <li>
-                                <NavLink href="/">
-                                    <i> <img src="premium/boxed-bg/polygon/thumbs/11.jpg" style="height:24px" > </i>
-                                    <span class="menu-title">
-                                        Menu1
-                                    </span>
-                                </NavLink>
-                            </li>
-                            <!--Menu list item-->
-                            <li>
-                                <NavLink class="main-color-layout" style="cursor: pointer;" @onclick="()=>IsMenuItem1 = !IsMenuItem1">
-                                    <i> <img src="premium/boxed-bg/polygon/thumbs/9.jpg" style="height:24px" > </i>
-                                    <i class="white-layout arrow"></i>
-                                    <span class="menu-title">
-                                       Menu2
-                                    </span>
-                                </NavLink>
-                                <ul class="@Menu2">
-                                    <li style="background-color: rgb(54, 151, 155)!important;color: rgb(255, 255, 255);">
-                                        <NavLink href="/Page1">SubMenu21</NavLink>
-                                    </li>
-                                    <li style="background-color: rgb(54, 151, 155)!important;color: rgb(255, 255, 255);">
-                                        <NavLink href="/Page2">SubMenu22</NavLink>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--Menu list item-->
-                            <li>
-                                <NavLink style="background-color: rgb(54, 151, 155)!important;cursor: pointer;" @onclick="()=>IsMenuItem2 = !IsMenuItem2">
-                                    <i> <img src="premium/boxed-bg/polygon/thumbs/14.jpg" style="height:24px" > </i>
-                                    <i style="color: white;" class="arrow"></i>
-                                    <span class="menu-title">
-                                        Menu3
-                                    </span>
-                                </NavLink>
-                                <ul class="@Menu3">
+<nav id="mainnav-container">
+    <div id="mainnav">
+        <!--Menu-->
+        <!--================================-->
+        <div class="sticky" id="mainnav-menu-wrap">
+            <div class="nano">
+                <div class="nano-content" style="overflow:hidden">
+                    <!--Profile Widget-->
+                    <!--================================-->
+                    <ul id="mainnav-menu" class="list-group">
+                        <!--Category name-->
+                        <li class="white-layout list-header">Navigation</li>
+                        <!--Menu list item-->
+                        <li>
+                            <NavLink href="/">
+                                <i> <img src="premium/boxed-bg/polygon/thumbs/11.jpg" style="height:24px"> </i>
+                                <span class="menu-title">
+                                    Menu1
+                                </span>
+                            </NavLink>
+                        </li>
+                        <!--Menu list item-->
+                        <li>
+                            <NavLink class="main-color-layout" style="cursor: pointer;" @onclick="()=>IsMenuItem1 = !IsMenuItem1">
+                                <i> <img src="premium/boxed-bg/polygon/thumbs/9.jpg" style="height:24px"> </i>
+                                <i class="white-layout arrow"></i>
+                                <span class="menu-title">
+                                    Menu2
+                                </span>
+                            </NavLink>
+                            <ul class="@Menu2">
+                                <li style="background-color: rgb(54, 151, 155)!important;color: rgb(255, 255, 255);">
+                                    <NavLink href="/Page1">SubMenu21</NavLink>
+                                </li>
+                                <li style="background-color: rgb(54, 151, 155)!important;color: rgb(255, 255, 255);">
+                                    <NavLink href="/Page2">SubMenu22</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--Menu list item-->
+                        <li>
+                            <NavLink style="background-color: rgb(54, 151, 155)!important;cursor: pointer;" @onclick="()=>IsMenuItem2 = !IsMenuItem2">
+                                <i> <img src="premium/boxed-bg/polygon/thumbs/14.jpg" style="height:24px"> </i>
+                                <i style="color: white;" class="arrow"></i>
+                                <span class="menu-title">
+                                    Menu3
+                                </span>
+                            </NavLink>
+                            <ul class="@Menu3">
+                                <li class="menu-url-layout">
+                                    <NavLink href="/Page3">SubMenu31</NavLink>
+                                </li>
+                                <li class="menu-url-layout">
+                                    <NavLink href="/Page4">SubMenu32</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <NavLink href="/Page5">
+                                <i> <img src="premium/boxed-bg/polygon/thumbs/8.jpg" style="height:24px"> </i>
+                                <span class="menu-title">
+                                    Menu4
+                                </span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink class="main-color-layout" style="cursor: pointer;" @onclick="()=>IsMenuItem3 = !IsMenuItem3">
+                                <i> <img src="premium/boxed-bg/polygon/thumbs/1.jpg" style="height:24px"> </i>
+                                <i style="color: white;" class="arrow"></i>
+                                <span class="menu-title">
+                                    Menu5
+                                </span>
+                            </NavLink>
+                            <ul class="@Menu4">
+                                <li class="menu-url-layout">
+                                    <NavLink href="/Page6">SubMenu51</NavLink>
+                                </li>
+                                <li class="menu-url-layout">
+                                    <NavLink href="/Page7">SubMenu52</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <NavLink class="main-color-layout" style="cursor: pointer;" @onclick="()=>IsMenuItem4 = !IsMenuItem4">
+                                <i> <img src="premium/boxed-bg/polygon/thumbs/2.jpg" style="height:24px"> </i>
+                                <i style="color: white;" class="arrow"></i>
+                                <span class="menu-title">
+                                    Menu6
+                                </span>
+                            </NavLink>
+                            <ul class="@Menu5">
+                                <li class="menu-url-layout">
+                                    <NavLink href="/Page8">SubMenu61</NavLink>
+                                </li>
+                                <li class="menu-url-layout">
+                                    <NavLink href="/Page9">SubMenu62</NavLink>
+                                    <NavLink href="/Page10">SubMenu62</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <NavLink class="main-color-layout collapse in" style="cursor: pointer;">
+                                <i> <img src="img/profile-photos/11.png" style="width:28px;height:28px" alt="User"> </i>
+                                <i style="color: white;" class="arrow"></i>
+                                <span class="menu-title">
+                                    User
+                                </span>
+                            </NavLink>
+                            <ul class="collapse in">
+                                @if (AuState.User.Identity.Name != null)
+                                {
                                     <li class="menu-url-layout">
-                                        <NavLink href="/Page3">SubMenu31</NavLink>
+                                        <NavLink href="/Account/Signout">Logoff</NavLink>
+                                    </li>
+
+                                }
+                                else
+                                {
+                                    <li class="menu-url-layout">
+                                        <NavLink href="/Login">Login</NavLink>
                                     </li>
                                     <li class="menu-url-layout">
-                                        <NavLink href="/Page4">SubMenu32</NavLink>
+                                        <NavLink href="/Register">Register</NavLink>
                                     </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <NavLink href="/Page5">
-                                    <i> <img src="premium/boxed-bg/polygon/thumbs/8.jpg" style="height:24px" > </i>
-                                    <span class="menu-title">
-                                        Menu4
-                                    </span>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink class="main-color-layout" style="cursor: pointer;" @onclick="()=>IsMenuItem3 = !IsMenuItem3">
-                                    <i> <img src="premium/boxed-bg/polygon/thumbs/1.jpg" style="height:24px" > </i>
-                                    <i style="color: white;" class="arrow"></i>
-                                    <span class="menu-title">
-                                        Menu5
-                                    </span>
-                                </NavLink>
-                                <ul class="@Menu4">
-                                    <li class="menu-url-layout">
-                                        <NavLink href="/Page6">SubMenu51</NavLink>
-                                    </li>
-                                    <li class="menu-url-layout">
-                                        <NavLink href="/Page7">SubMenu52</NavLink>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <NavLink class="main-color-layout" style="cursor: pointer;" @onclick="()=>IsMenuItem4 = !IsMenuItem4">
-                                    <i> <img src="premium/boxed-bg/polygon/thumbs/2.jpg" style="height:24px"> </i>
-                                    <i style="color: white;" class="arrow"></i>
-                                    <span class="menu-title">
-                                        Menu6
-                                    </span>
-                                </NavLink>
-                                <ul class="@Menu5">
-                                    <li class="menu-url-layout">
-                                        <NavLink href="/Page8">SubMenu61</NavLink>
-                                    </li>
-                                    <li class="menu-url-layout">
-                                        <NavLink href="/Page9">SubMenu62</NavLink>
-                                        <NavLink href="/Page10">SubMenu62</NavLink>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li style="cursor:default !important;" target="_blank" skip-router="true">
-                                <NavLink class="media-ind" href="/">
-                                    <img class="icon-media-menu" src="img/images/Facebook icon.png" alt="investing">
-                                    <span class="white-layout layout-disp-none">
-                                        Facebook
-                                    </span>
-                                </NavLink>
-                                <NavLink class="media-ind" href="/" target="_blank" skip-router="true">
-                                    <img class="icon-media-menu" src="img/images/Twitter icon.png" alt="investing">
-                                    <span class="white-layout layout-disp-none">
-                                        Twitter
-                                    </span>
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </div>
+                                }
+                            </ul>
+                        </li>
+                        <li style="cursor:default !important;" target="_blank" skip-router="true">
+                            <NavLink class="media-ind" href="/">
+                                <img class="icon-media-menu" src="img/images/Facebook icon.png" alt="investing">
+                                <span class="white-layout layout-disp-none">
+                                    Facebook
+                                </span>
+                            </NavLink>
+                            <NavLink class="media-ind" href="/" target="_blank" skip-router="true">
+                                <img class="icon-media-menu" src="img/images/Twitter icon.png" alt="investing">
+                                <span class="white-layout layout-disp-none">
+                                    Twitter
+                                </span>
+                            </NavLink>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <!--================================-->
-            <!--End menu-->
         </div>
-    </nav>
+        <!--================================-->
+        <!--End menu-->
+    </div>
+</nav>
 
 @code {
 
@@ -134,5 +161,18 @@
     private string Menu3 => IsMenuItem2 ? "collapse in" : "collapse";
     private string Menu4 => IsMenuItem3 ? "collapse in" : "collapse";
     private string Menu5 => IsMenuItem4 ? "collapse in" : "collapse";
+
+    [Inject] AuthenticationStateProvider authenticationStateProvider { get; set; }
+    [Inject] ILogger<MainNav> Log { get; set; }
+
+    public static AuthenticationState AuState = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuState = await authenticationStateProvider.GetAuthenticationStateAsync();
+        Log.LogInformation($"MainNav.AuthenticationStateProvider.User (OnInitializedAsync) ={AuState.User.Identity.Name}");
+    }
+
+
 }
 
