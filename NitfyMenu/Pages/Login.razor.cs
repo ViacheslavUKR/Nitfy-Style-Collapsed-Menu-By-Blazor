@@ -20,7 +20,7 @@ namespace NitfyMenu.Pages
         protected SignInModel signInModel = new SignInModel();
         protected bool showSignInError = false;
 
-        protected async Task RegisterUser()
+        protected async Task Login()
         {
             var user = await userManager.FindByEmailAsync(signInModel.Email);
 

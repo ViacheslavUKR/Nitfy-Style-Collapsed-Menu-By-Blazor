@@ -21,6 +21,7 @@ namespace NitfyMenu.Pages
 
         protected async Task RegisterUser()
         {
+
             var result = await userManager.CreateAsync(new ApplicationUser { UserName = registerAccountModel.Email, Email = registerAccountModel.Email, EmailConfirmed = true }, registerAccountModel.Password);
 
             if (result.Succeeded)
