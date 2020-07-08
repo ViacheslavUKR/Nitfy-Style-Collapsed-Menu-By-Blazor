@@ -30,8 +30,9 @@ namespace NitfyMenu
         {
 
             services.AddDbContext<ApplicationDbContext>(
-    options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")),
-    ServiceLifetime.Transient);
+                (Microsoft.EntityFrameworkCore.DbContextOptionsBuilder options) => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                (Microsoft.EntityFrameworkCore.Infrastructure.MySqlDbContextOptionsBuilder mySqlOption) => mySqlOption.CommandTimeout(10)),
+                ServiceLifetime.Transient, ServiceLifetime.Transient);
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
